@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "components/admin/AuthProvider.jsx", "app/admin/login/page.jsx", "app/admin/events/page.jsx", "app/admin/register/page.jsx", "app/(site)/layout.jsx", "app/(site)/events/page.jsx", "app/(site)/members/page.jsx", "app/(site)/page.jsx", "components/Footer.jsx", "components/Navbar.tsx", "app/(site)/contact/page.jsx"  ],
   "exclude": ["node_modules"]
 }
