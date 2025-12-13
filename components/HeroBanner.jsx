@@ -7,81 +7,103 @@ import Link from "next/link";
 export default function HeroBanner({ banners = [], about }) {
   const fallbackStyle = {
     background:
-      "linear-gradient(135deg, #0C2340 0%, #1E5BA8 60%, rgba(245,166,35,0.12) 100%)",
+      "linear-gradient(135deg, #0C2340 0%, #1E5BA8 60%, rgba(245,166,35,0.15) 100%)",
   };
 
-  const slides = banners.length > 0 ? banners : [{ image: null }];
+  const slides = banners.length ? banners : [{ image: null }];
 
   return (
     <header className="relative w-full overflow-hidden">
-
-     
-
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
-        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        autoplay={{ delay: 3800, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         navigation={true}
         loop={true}
-        className="w-full h-[65vh] md:h-[85vh]"
+        className="w-full h-[70vh] md:h-[88vh]"
       >
         {slides.map((b, i) => (
           <SwiperSlide key={i}>
-           <div
-  className="w-full h-full bg-center bg-cover flex items-center"
-  style={b.image ? { backgroundImage: `url(${b.image})` } : fallbackStyle}
->
-  <div
-    className="w-full h-full flex items-center"
-    style={{
-      background:
-        "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.1) 100%)",
-    }}
-  >
-    {/* LEFT-LOCKED CONTENT */}
-    <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20">
-      <div className="text-white max-w-xl animate-heroFadeUp space-y-4 md:space-y-6 text-left">
+            <div
+              className="relative w-full h-full bg-center bg-cover flex items-center"
+              style={b.image ? { backgroundImage: `url(${b.image})` } : fallbackStyle}
+            >
+              {/* Overlay */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.2) 100%)",
+                }}
+              />
 
-        <h1 className="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">
-          Lions Club —{" "}
-          <span className="relative text-[#F5A623]">
-            We Serve
-            <span className="absolute inset-0 blur-2xl opacity-40 bg-[#F5A623]" />
-          </span>
-        </h1>
+              {/* CONTENT */}
+              <div className="relative z-10 w-full px-5 sm:px-8 md:px-14 lg:px-24">
+                <div className="max-w-xl text-white space-y-4 md:space-y-6 animate-heroFadeUp">
 
-        <p className="text-sm md:text-lg text-white/90">
-          {about?.description
-            ? about.description.slice(0, 180) +
-              (about.description.length > 180 ? "..." : "")
-            : "Committed to community service, leadership and compassion."}
-        </p>
+                  {/* Title */}
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-xl">
+                    Lions Club —{" "}
+                    <span className="relative text-[#F5A623]">
+                      We Serve
+                      <span className="absolute inset-0 blur-2xl opacity-40 bg-[#F5A623]" />
+                    </span>
+                  </h1>
 
-        <div className="flex gap-3 mt-4">
-          <Link
-            href="/contact"
-            className="relative inline-block px-5 py-2 rounded-md font-semibold text-[#0C2340]
-            before:absolute before:inset-0 before:rounded-md before:p-[2px]
-            before:bg-gradient-to-r before:from-[#F5A623] before:to-[#FFC857]
-            before:-z-10 hover:scale-105 transition"
-          >
-            Join Us
-          </Link>
+                  {/* Accent line */}
+                  <div className="w-14 h-[3px] bg-[#F5A623] rounded-full" />
 
-          <Link
-            href="/events"
-            className="inline-block px-5 py-2 rounded-md border border-white/30 
-                       text-white/95 hover:bg-white/10 transition"
-          >
-            Upcoming Events
-          </Link>
-        </div>
+                  {/* Trust line */}
+                  <p className="text-[11px] md:text-xs uppercase tracking-widest text-[#F5A623]/90">
+                    Lions International • Community Service • Leadership
+                  </p>
 
-      </div>
-    </div>
-  </div>
-</div>
+                  {/* Description */}
+                  <p className="text-sm md:text-lg text-white/90 leading-relaxed">
+                    {about?.description
+                      ? about.description.slice(0, 160) +
+                        (about.description.length > 160 ? "..." : "")
+                      : "Committed to community service, leadership and compassion."}
+                  </p>
 
+                  {/* Buttons */}
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <Link
+                      href="/contact"
+                      className="
+                        relative inline-flex items-center justify-center
+                        px-6 py-2.5 rounded-md font-semibold
+                        text-[#0C2340]
+                        before:absolute before:inset-0 before:rounded-md before:p-[2px]
+                        before:bg-gradient-to-r before:from-[#F5A623] before:to-[#FFC857]
+                        before:-z-10
+                        shadow-lg hover:shadow-xl hover:scale-105 transition-all
+                      "
+                    >
+                      Join Us
+                    </Link>
+
+                    <Link
+                      href="/events"
+                      className="
+                        inline-flex items-center justify-center
+                        px-5 py-2.5 rounded-md
+                        border border-white/30
+                        text-white/95
+                        hover:bg-white/10 transition
+                      "
+                    >
+                      Upcoming Events
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Scroll hint */}
+              <div className="absolute bottom-6 left-6 text-white/70 text-xs animate-bounce">
+                Scroll ↓
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

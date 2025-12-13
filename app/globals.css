@@ -24,6 +24,28 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* GLOBAL RESPONSIVE TYPOGRAPHY */
+/* Global responsive typography — compact & balanced */
+
+h1 {
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+}
+
+h2 {
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+}
+
+h3 {
+  font-size: clamp(1.05rem, 2.1vw, 1.4rem);
+}
+
+p,
+span,
+li {
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+}
+
+
 /* Add to globals.css */
 .hero-bg {
   transform: scale(1.1);
